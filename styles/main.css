@@ -25,5 +25,7 @@ header {
 }
 .newEntry__date, .newEntry__concept, .newEntry__text, .newEntry__mood, .newEntry__button{
 	margin-left:40%;
+	margin-top:5px;
+	
 	
 }
