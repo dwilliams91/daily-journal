@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Comfortaa|Patua+One");
+
+/*Typography
+--------------------------------------------------------------*/
+
+
+header {
+	display:flex;
+	background-size: cover;
+	background-image: url(https://www.incimages.com/uploaded_files/image/1920x1080/getty_625390400_200013341818843182339_374947.jpg);
+	height: 150px;
+}
+
+
+.title{
+	margin-left: auto;
+	margin-right: auto;
+	color:blue;
+	font-size: 50px;
+}
+
+.newEntry{
+	background-color: burlywood;
+	padding: 50px 0px;
+}
+.newEntry__date, .newEntry__concept, .newEntry__text, .newEntry__mood, .newEntry__button{
+	margin-left:40%;
+	
+}
