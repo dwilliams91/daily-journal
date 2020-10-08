@@ -1,4 +1,4 @@
-const journal = [
+export const journal = [
     {
         id: 1,
         date: "07/24/2025",
@@ -14,7 +14,7 @@ const journal = [
         mood: "Sad"
     },
     {
-        id=3,
+        id: 3,
         date:"7/27/2025",
         concept:"Java to html",
         entry:"we tried to get the fish to be dynamically created from the javascript.",

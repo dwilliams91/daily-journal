@@ -1,6 +1,4 @@
+// const { EntryListComponent } = require("./JournalEntryList");
+import {EntryListComponent} from "./JournalEntryList.js"
 
-$("#theButton").click(function(){
-   var date=document.getElementById(concept).value
-   console.log(date)
-
-})
+EntryListComponent()
