@@ -23,9 +23,9 @@ header {
 	background-color: burlywood;
 	padding: 50px 0px;
 }
-.newEntry__date, .newEntry__concept, .newEntry__text, .newEntry__mood, .newEntry__button{
-	margin-left:40%;
-	margin-top:5px;
-	
-	
+.journalEntry{
+	border:1px solid black;
+}
+.pastEntries :hover{
+	background-color: turquoise;
 }
