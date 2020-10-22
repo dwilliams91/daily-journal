@@ -1,10 +1,6 @@
 // const { EntryListComponent } = require("./JournalEntryList");
-import {EntryListComponent} from "./JournalEntryList.js"
+import {EntryList} from "./JournalEntryList.js"
+import { EntryForm } from "./JournalFormComponent.js"
 
-EntryListComponent()
-
-$("#theButton").click(function(){
-    console.log("hi")
-
-
-})
+EntryList()
+EntryForm()

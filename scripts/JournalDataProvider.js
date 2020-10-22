@@ -1,36 +1,42 @@
-export const journal = [
-    {
-        id: 1,
-        date: "07/24/2025",
-        concept: "HTML & CSS",
-        entry: "We talked about HTML components and how to make grid layouts with Flexbox in CSS.",
-        mood: "Ok"
-    },
-    {
-        id: 2,
-        date: "07/26/2025",
-        concept: "Complex Flexbox",
-        entry: "I tried to have an element in my Flexbox layout also be another Flexbox layout. It hurt my brain. I hate Steve.",
-        mood: "Sad"
-    },
-    {
-        id: 3,
-        date:"7/27/2025",
-        concept:"Java to html",
-        entry:"we tried to get the fish to be dynamically created from the javascript.",
-        mood:"frustrated"
 
-    }
-]
+const eventHub = document.querySelector(".container")
 
-/*
-    You export a function that provides a version of the
-    raw data in the format that you want
-*/
-export const useJournalEntries = () => {
-    const sortedByDate = journal.sort(
+const dispatchStateChangeEvent = () => {
+    const entryStateChangedEvent = new CustomEvent("entryStateChange")
+    eventHub.dispatchEvent(entryStateChangedEvent)
+
+}
+
+let allEntries = []
+export const getEntries = () => {
+    return fetch("http://localhost:8088/entries") // Fetch from the API
+        .then(response => response.json())  // Parse as JSON
+        .then(parsedEntries => {
+            allEntries = parsedEntries
+        })
+}
+
+export const useEntries = () => {
+    const sortedByDate = allEntries.sort(
         (currentEntry, nextEntry) =>
             Date.parse(currentEntry.date) - Date.parse(nextEntry.date)
     )
     return sortedByDate
+}
+
+
+
+
+
+
+export const saveEntry = entry => {
+    return fetch('http://localhost:8088/entries', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(entry)
+    })
+        .then(getEntries)
+        .then(dispatchStateChangeEvent)
 }
