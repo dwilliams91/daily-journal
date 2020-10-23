@@ -16,10 +16,10 @@ const render = () => {
             </fieldset>
             <fieldset>
                     <select name="mood" id="mood">
-                        <option value="volvo">Happy</option>
-                        <option value="saab">Sad</option>
-                        <option value="mercedes">Stressed</option>
-                        <option value="audi">Asleep</option>
+                        <option value="happy">Happy</option>
+                        <option value="Sad">Sad</option>
+                        <option value="stressed">Stressed</option>
+                        <option value="asleep">Asleep</option>
                     </select>
             </fieldset>
                 <button type="submit" id=theButton>Record Journal Entry</button>
@@ -42,6 +42,7 @@ eventHub.addEventListener("click", clickEvent => {
             mood: mood,
         }
         saveEntry(newEntry)
+        render()
     }
 
 })
