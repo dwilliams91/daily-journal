@@ -1,32 +1,29 @@
 {
   "entries": [
     {
+      "date": "2020-11-10",
+      "concept": "blah",
+      "entry": "blah",
+      "moodId": "1",
+      "id": 1
+    }
+  ],
+  "moods": [
+    {
       "id": 1,
-      "date": "07/24/2025",
-      "concept": "HTML & CSS",
-      "entry": "We talked about HTML components and how to make grid layouts with Flexbox in CSS.",
-      "mood": "Ok"
+      "label": "Ok"
     },
     {
       "id": 2,
-      "date": "07/26/2025",
-      "concept": "Complex Flexbox",
-      "entry": "I tried to have an element in my Flexbox layout also be another Flexbox layout. It hurt my brain. I hate Steve.",
-      "mood": "Sad"
+      "label": "Verklempt"
     },
     {
       "id": 3,
-      "date": "7/27/2025",
-      "concept": "Java to html",
-      "entry": "we tried to get the fish to be dynamically created from the javascript.",
-      "mood": "frustrated"
+      "label": "tired"
     },
     {
-      "date": "2020-10-21",
-      "concept": "hi",
-      "entry": "Hello",
-      "mood": "volvo",
-      "id": 4
+      "id": 4,
+      "label": "great"
     }
   ]
 }
