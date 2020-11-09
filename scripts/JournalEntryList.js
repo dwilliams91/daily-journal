@@ -29,13 +29,14 @@ const render=(entriesArray,moodArray)=>{
     let htmlRepresentation=entriesArray.map(entry=>{
     
     const relatedMood=moodArray.find(mood=>mood.id===parseInt(entry.moodId))
-    console.log(relatedMood)
+    // console.log(relatedMood)
     return `
         <section id="entry--${entry.id}" class="journalEntry">
             <h3>${entry.concept}</h3>
             <p> ${entry.entry}</p>
             <p>${entry.date}</p>
             <p>${relatedMood.label}</p>
+            <button id=editEntries--${entry.id}>edit</button>
             <button id=deleteEntries--${entry.id}>delete</button>
         </section>
     `
@@ -54,6 +55,19 @@ eventHub.addEventListener("click",click=>{
             render(updateEntries,mood)
 
         })
+    }
+
+})
+eventHub.addEventListener("click",click=>{
+    if (click.target.id.startsWith("editEntries--")){
+        const [prefix,id]=click.target.id.split("--")
+                const message= new CustomEvent("editingEntries", {
+            detail:{
+                entryId:id
+            }
+
+        })
+        eventHub.dispatchEvent(message)
     }
 
 })
