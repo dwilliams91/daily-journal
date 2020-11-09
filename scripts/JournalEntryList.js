@@ -4,7 +4,7 @@
  *    there are items in the collection exposed by the
  *    data provider component
  */
-import { useEntries,getEntries, getMoods, useMoods  } from "./JournalDataProvider.js"
+import { useEntries,getEntries, getMoods, useMoods, deleteEntry  } from "./JournalDataProvider.js"
 import { JournalEntryComponent } from "./JournalEntry.js"
 
 // DOM reference to where all entries will be rendered
@@ -36,9 +36,24 @@ const render=(entriesArray,moodArray)=>{
             <p> ${entry.entry}</p>
             <p>${entry.date}</p>
             <p>${relatedMood.label}</p>
+            <button id=deleteEntries--${entry.id}>delete</button>
         </section>
     `
     }).join(``)
-    console.log(htmlRepresentation)
+    // console.log(htmlRepresentation)
     contentTarget.innerHTML=htmlRepresentation
 }
+
+eventHub.addEventListener("click",click=>{
+    if (click.target.id.startsWith("deleteEntries--")){
+        const [prefix,id]=click.target.id.split("--")
+        
+        deleteEntry(id).then(()=>{
+            const updateEntries=useEntries()
+            const mood=useMoods()
+            render(updateEntries,mood)
+
+        })
+    }
+
+})
