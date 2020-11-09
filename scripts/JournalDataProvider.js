@@ -56,3 +56,14 @@ export const deleteEntry=(entryId)=>{
     })
     .then(getEntries)
 }
+
+export const updateEntries = (entriesId) => {
+    console.log(`http://localhost:8088/entries/${entriesId.id}`)
+    return fetch(`http://localhost:8088/entries/${entriesId.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(entriesId)
+    })
+}

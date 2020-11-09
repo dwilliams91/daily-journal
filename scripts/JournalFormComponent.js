@@ -1,29 +1,31 @@
-import { getEntries, getMoods, saveEntry, useEntries, useMoods } from './JournalDataProvider.js'
+import { getEntries, getMoods, saveEntry, updateEntries, useEntries, useMoods } from './JournalDataProvider.js'
+import { EntryList } from './JournalEntryList.js'
 const contentTarget = document.querySelector(".newEntry")
 const eventHub = document.querySelector(".container")
 
-const render = (moods,defaultText) => {
+const render = (moods,inputText) => {
+    // console.log("this is what should go in the concept field",inputText)
     contentTarget.innerHTML =
         `
 <fieldset>
-                <input type="date" name="Date" id="date" value=${defaultText.date}>
+                <input type="date" name="Date" id="date" value=${inputText.date}>
             </fieldset>
             <fieldset>
-                <input type="text" name="concept" id="concept" value=${defaultText.concept}>
+                <input type="text" name="concept" id="concept" value="${inputText.concept}">
             </fieldset>
             <fieldset>
-                <textarea id=newEntry placeholder=${defaultText.entry} value=${defaultText.entry}>${defaultText.entry}</textarea>
+                <textarea id=newEntry placeholder=${inputText.entry} value="${inputText.entry}">${inputText.entry}</textarea>
             </fieldset>
             <fieldset>
                     <select name="mood" id="mood">
                     ${moods.map(mood => {
-            return `<option value=${mood.id}>${mood.label}</option>
+            return `<option value="${mood.id}">${mood.label}</option>
                         `
         })}
                     
                     </select>
             </fieldset>
-            <input type="hidden" name="entryId" id="entryId">
+            <input type="hidden" name="${inputText.id}" id="entryId">
 
                 <button type="submit" id=theButton>Record Journal Entry</button>
 `
@@ -33,10 +35,10 @@ const render = (moods,defaultText) => {
 eventHub.addEventListener("click", clickEvent => {
 
     if (clickEvent.target.id === "theButton") {
-        const id = document.querySelector("#entryId")
-        console.log(id)
-        if (id === "") {
-           const date = document.querySelector("#date").value
+        const HiddenId = document.querySelector("#entryId").name
+        // console.log(HiddenId)
+        if (HiddenId === "entryId") {
+        const date = document.querySelector("#date").value
         const concept = document.querySelector("#concept").value
         const entry = document.querySelector("#newEntry").value
         const mood = document.querySelector("#mood").value
@@ -50,8 +52,24 @@ eventHub.addEventListener("click", clickEvent => {
         saveEntry(newEntry)
         EntryForm()
         } else {
-            // id value is there, so PUT entry with `updateEntry()`
-            // from data provider
+            // this is putting the values from the dom into the array that gets set to json
+        const date = document.querySelector("#date").value
+        const concept = document.querySelector("#concept").value
+        const entry = document.querySelector("#newEntry").value
+        const mood = document.querySelector("#mood").value
+
+        const updateEntry = {
+            date: date,
+            concept: concept,
+            entry: entry,
+            moodId: mood,
+            id:HiddenId
+        }
+        // console.log("update this entry", updateEntry.id)
+        updateEntries(updateEntry)
+            .then(EntryList)
+            .then(EntryForm())
+            
         }
        
         
@@ -67,19 +85,21 @@ export const EntryForm = () => {
             const defaultText={
                 date:"yyyy-MM-dd",
                 concept:"concept",
-                entry:"Type Entry Text Here"
+                entry:"Type Entry Text Here",
+                moodId:1,
+                id:"entryId"
 
             }
             render(moods,defaultText)
         })
 
 }
-
+// this is the event listener when I edit the an entry
 eventHub.addEventListener("editingEntries", event => {
-
     const entrySelected = event.detail.entryId
     const listOfEntries = useEntries()
-    const entryToEdit = listOfEntries.find(taco => taco.id === parseInt(entrySelected))
+    const entryToEdit = listOfEntries.find(entries => entries.id === parseInt(entrySelected))
+    // console.log( entryToEdit.id)
     getMoods()
         .then(() => {
             const moods = useMoods()
