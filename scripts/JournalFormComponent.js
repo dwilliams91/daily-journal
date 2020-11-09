@@ -23,6 +23,8 @@ const render = (moods) => {
                     
                     </select>
             </fieldset>
+            <input type="hidden" name="entryId" id="entryId">
+
                 <button type="submit" id=theButton>Record Journal Entry</button>
 `
 
@@ -49,9 +51,6 @@ eventHub.addEventListener("click", clickEvent => {
 
 })
 
-
-
-
 export const EntryForm = () => {
     getMoods()
     .then(()=>{
@@ -60,3 +59,9 @@ export const EntryForm = () => {
     })
     
 }
+
+eventHub.addEventListener("editingEntries", event =>{
+    
+    console.log(event.detail.entryId)
+    
+} )

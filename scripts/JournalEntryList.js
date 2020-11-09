@@ -36,6 +36,7 @@ const render=(entriesArray,moodArray)=>{
             <p> ${entry.entry}</p>
             <p>${entry.date}</p>
             <p>${relatedMood.label}</p>
+            <button id=editEntries--${entry.id}>edit</button>
             <button id=deleteEntries--${entry.id}>delete</button>
         </section>
     `
@@ -54,6 +55,21 @@ eventHub.addEventListener("click",click=>{
             render(updateEntries,mood)
 
         })
+    }
+
+})
+eventHub.addEventListener("click",click=>{
+    if (click.target.id.startsWith("editEntries--")){
+        const [prefix,id]=click.target.id.split("--")
+        
+        console.log("hi!", id)
+        const message= new CustomEvent("editingEntries", {
+            detail:{
+                entryId:id
+            }
+
+        })
+        eventHub.dispatchEvent(message)
     }
 
 })
