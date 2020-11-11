@@ -1,25 +1,32 @@
 {
   "entries": [
     {
-      "date": "2020-11-10",
-      "concept": "rendering to the dom",
-      "entry": "lots of stuff and more type type type",
+      "date": "2020-11-11",
+      "concept": "Rendering",
+      "entry": "We went over how to render to the dom when the data has a many to many relationship",
       "moodId": "4",
-      "id": 3
+      "id": 7
     },
     {
-      "date": "2020-11-10",
-      "concept": "We went over stuff",
-      "entry": "Type stuff here adding this",
-      "moodId": "1",
-      "id": 5
+      "date": "2020-11-04",
+      "concept": "ERDs",
+      "entry": "We went over the basics of the ERD diagrams",
+      "moodId": "2",
+      "id": 8
     },
     {
-      "date": "2020-11-10",
-      "concept": "New stuff",
-      "entry": "Type Entasdfasdry Text Here asdf",
+      "date": "2020-11-05",
+      "concept": "Data Arrays",
+      "entry": "Today was going over flattening Data",
       "moodId": "1",
-      "id": 6
+      "id": 9
+    },
+    {
+      "date": "2020-11-09",
+      "concept": "Json",
+      "entry": " learned how to edit data in a json",
+      "moodId": "4",
+      "id": 10
     }
   ],
   "moods": [

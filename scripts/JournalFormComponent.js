@@ -8,14 +8,18 @@ const render = (moods,inputText) => {
     contentTarget.innerHTML =
         `
 <fieldset>
+            <p>Date</p>
                 <input type="date" name="Date" id="date" value=${inputText.date}>
             </fieldset>
+            <p>Concept</p>
             <fieldset>
                 <input type="text" name="concept" id="concept" value="${inputText.concept}">
             </fieldset>
+            <p>Entry</p>
             <fieldset>
                 <textarea id=newEntry placeholder=${inputText.entry} value="${inputText.entry}">${inputText.entry}</textarea>
             </fieldset>
+            <p>Mood</p>
             <fieldset>
                     <select name="mood" id="mood">
                     ${moods.map(mood => {

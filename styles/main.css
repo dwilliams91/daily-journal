@@ -27,5 +27,8 @@ header {
 	border:1px solid black;
 }
 .pastEntries :hover{
-	background-color: turquoise;
+	background-color:#f59847;
+}
+.pastEntries{
+	background-color: #f7b072;
 }
