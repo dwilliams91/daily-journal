@@ -27,6 +27,13 @@
       "entry": " learned how to edit data in a json",
       "moodId": "4",
       "id": 10
+    },
+    {
+      "date": "2020-11-02",
+      "concept": "Data",
+      "entry": "We flattened the data on holiday road which meant we had to refactor how it was displaying to the dom.",
+      "moodId": "2",
+      "id": 11
     }
   ],
   "moods": [

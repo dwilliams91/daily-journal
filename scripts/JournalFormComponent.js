@@ -6,21 +6,24 @@ const eventHub = document.querySelector(".container")
 const render = (moods,inputText) => {
     // console.log("this is what should go in the concept field",inputText)
     contentTarget.innerHTML =
-        `
+        `<h2>Record New Entry</h2> 
 <fieldset>
             <p>Date</p>
                 <input type="date" name="Date" id="date" value=${inputText.date}>
             </fieldset>
-            <p>Concept</p>
+            
             <fieldset>
+            <p>Concept</p>
                 <input type="text" name="concept" id="concept" value="${inputText.concept}">
             </fieldset>
-            <p>Entry</p>
+            
             <fieldset>
+            <p>Entry</p>
                 <textarea id=newEntry placeholder=${inputText.entry} value="${inputText.entry}">${inputText.entry}</textarea>
             </fieldset>
-            <p>Mood</p>
+            
             <fieldset>
+            <p>Mood</p>
                     <select name="mood" id="mood">
                     ${moods.map(mood => {
             return `<option value="${mood.id}">${mood.label}</option>
