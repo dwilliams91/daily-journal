@@ -18,10 +18,20 @@ header {
 	color:blue;
 	font-size: 50px;
 }
-
+fieldset{
+	border: none;
+	
+}
 .newEntry{
 	background-color: burlywood;
-	padding: 50px 0px;
+	flex-basis: 29%;
+}
+#concept{
+	width: 500px;
+}
+#newEntry{
+	width: 500px;
+	height:100px
 }
 .journalEntry{
 	border:1px solid black;
@@ -29,6 +39,14 @@ header {
 .pastEntries :hover{
 	background-color:#f59847;
 }
-.pastEntries{
-	background-color: #f7b072;
+
+.flexbox{
+	display:flex
+}
+.allPreviousEntries{
+flex-basis: 70%;
+background-color: #fcbe88;
+max-height: 700px ;
+overflow:scroll
+
 }
