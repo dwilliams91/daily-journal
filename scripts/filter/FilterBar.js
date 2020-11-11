@@ -10,10 +10,8 @@ export const FilterBar = () => {
     const contentTarget = document.querySelector(".filters")
     
     const render = (myMoods) => {
-        console.log("hello")
 
         const myHTML=MoodFilter(myMoods)
-        console.log(myHTML)
         contentTarget.innerHTML = myHTML
     }
     getMoods()

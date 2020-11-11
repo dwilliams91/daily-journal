@@ -71,3 +71,20 @@ eventHub.addEventListener("click",click=>{
     }
 
 })
+// filtering
+eventHub.addEventListener("selectedMood",e=>{
+    
+    const allMoods=useMoods()
+    const allEntries=useEntries()
+    console.log(e.detail.moodId)
+    if (parseInt(e.detail.moodId)===0){
+        render(allEntries,allMoods)
+    } 
+    else {
+    const chosenMood=allMoods.find(mood=>mood.id===parseInt(e.detail.moodId))
+    
+    const filteredMoods=allEntries.filter(entries=>parseInt(entries.moodId)===chosenMood.id)
+    console.log(filteredMoods)
+    render(filteredMoods,allMoods)}
+
+})
